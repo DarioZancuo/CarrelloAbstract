@@ -10,5 +10,3 @@ public class CarrelloAbstractApplication {
 		SpringApplication.run(CarrelloAbstractApplication.class, args);
 	}
 }
-
-//Test commento by Emanuele
