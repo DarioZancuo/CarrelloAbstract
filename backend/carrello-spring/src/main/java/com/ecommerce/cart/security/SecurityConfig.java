@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -29,24 +28,27 @@ public class SecurityConfig {
 
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-		http.csrf(AbstractHttpConfigurer::disable)
-				.cors(cors -> cors.configurationSource(corsConfigurationSource()))
-				.authorizeHttpRequests(auth -> auth
-						.requestMatchers("/api/auth/**", 
-										 "/h2-console/**", 
-										 "/web/**", 
-										 "/v3/api-docs/**",
-										 "/swagger-ui/**", 
-										 "/swagger-ui.html") 
-						.permitAll()
-						.requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
-						.anyRequest().authenticated())
-				 .headers(headers -> headers
-			                .frameOptions(frame -> frame.sameOrigin())
-				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class));
+	    http.csrf(AbstractHttpConfigurer::disable)
+	            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
+	            .authorizeHttpRequests(auth -> auth
+	                    .requestMatchers(
+	                            "/api/auth/**",
+	                            "/h2-console/**",
+	                            "/web/**",
+	                            "/v3/api-docs/**",
+	                            "/swagger-ui/**",
+	                            "/swagger-ui.html"
+	                    ).permitAll()
+	                    .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+	                    .anyRequest().authenticated()
+	            )
+	            .headers(headers -> headers
+	                    .frameOptions(frame -> frame.sameOrigin())
+	            )
+	            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+	            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
-		return http.build();
+	    return http.build();
 	}
 
 	@Bean
