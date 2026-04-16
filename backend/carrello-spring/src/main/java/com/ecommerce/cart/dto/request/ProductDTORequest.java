@@ -6,6 +6,6 @@ public record ProductDTORequest(
 	    Long id_prod, 
 	    String name, 
 	    String description,
-	    Double price,
+	    Double price,  
 	    Category category
 	) {}

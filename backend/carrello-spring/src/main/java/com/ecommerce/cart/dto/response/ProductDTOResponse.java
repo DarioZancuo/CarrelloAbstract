@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 public record ProductDTOResponse(
 	    Long id_prod, 
 	    String name, 
-	    Double price,
+	    String description,
+	    Double price, 
 	    Category category
 	) {}
