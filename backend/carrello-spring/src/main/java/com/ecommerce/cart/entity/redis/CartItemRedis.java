@@ -19,4 +19,5 @@ public class CartItemRedis implements Serializable {
     private BigDecimal unitPrice;
     private Integer quantity;
     private BigDecimal subtotal;
+    private String imageUrl;
 }

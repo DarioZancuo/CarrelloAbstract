@@ -80,6 +80,7 @@ public class CartService {
 
     //removeItem
     public CartResponse removeItem(String username, Long productId) {
+    	
         CartRedis cart = getCartOrThrow(username);
 
         CartItemRedis item = getCartItemOrThrow(cart, productId);
@@ -113,7 +114,8 @@ public class CartService {
     }
 
     private CartRedis getCartOrThrow(String username) {
-        return cartRedisRepository.findById(buildCartId(username))
+    	
+        return cartRedisRepository.findById(username)
                 .orElseThrow(() -> new NotFoundException("Cart not found for user: " + username));
     }
 
@@ -130,6 +132,13 @@ public class CartService {
                 .findFirst()
                 .orElseThrow(() -> new NotFoundException("Product not found in cart: " + productId));
     }
+    
+    private CartRedis getCartItemOrThrow(String username) {
+        return cartRedisRepository.findById(buildCartId(username))
+                .orElseThrow(() -> new NotFoundException("Cart not found for user: " + username));
+    }
+    
+    
 
     private void validateQuantity(Integer quantity) {
         if (quantity == null || quantity <= 0) {
@@ -138,7 +147,7 @@ public class CartService {
     }
 
     private String buildCartId(String username) {
-        return "cart:user:" + username;
+        return username;
     }
 
     private void recalculateCart(CartRedis cart) {
