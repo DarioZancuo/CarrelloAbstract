@@ -26,8 +26,14 @@ public class Product {
 	@Column(name="c_name", nullable = false)
 	private String name;
 	
+	@Column(name="c_description", nullable = true)
+	private String description;
+	
 	@Column(name="c_price", nullable = false)
 	private Double price;
+	
+	
+	
 	
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
