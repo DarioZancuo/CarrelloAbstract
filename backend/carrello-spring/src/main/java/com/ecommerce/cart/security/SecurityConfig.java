@@ -41,6 +41,8 @@ public class SecurityConfig {
 						.permitAll()
 						.requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
 						.anyRequest().authenticated())
+				 .headers(headers -> headers
+			                .frameOptions(frame -> frame.sameOrigin())
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
 				.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
