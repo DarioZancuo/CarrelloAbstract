@@ -5,6 +5,6 @@ import jakarta.validation.constraints.NotNull;
 
 public record UpdateQtyRequest(
 		
-		@NotNull Long productId, @NotNull @Min(1) Integer quantity) {
+		@NotNull Long productId, @NotNull Integer quantity) {
 
 }
