@@ -7,10 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CarrelloAbstractApplication {
 
 	public static void main(String[] args) {
-		// Test
 		SpringApplication.run(CarrelloAbstractApplication.class, args);
 	}
 }
 
 //ciao test thomas
-//ciao test matti <3
+//ciao da mattia
