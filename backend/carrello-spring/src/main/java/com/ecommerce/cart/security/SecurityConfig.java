@@ -44,8 +44,7 @@ public class SecurityConfig {
 				 .headers(headers -> headers
 			                .frameOptions(frame -> frame.sameOrigin())
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-				.headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
+				.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
 		return http.build();
 	}
