@@ -1,7 +1,7 @@
-INSERT INTO t_categories (c_id, c_name, c_description) VALUES (1, 'Moda', 'Categoria della moda');
-INSERT INTO t_categories (c_id, c_name, c_description) VALUES (2, 'Tech', 'Categoria tech');
-INSERT INTO t_categories (c_id, c_name, c_description) VALUES (3, 'Viaggi', 'Categoria dei viaggi');
-INSERT INTO t_categories (c_id, c_name, c_description) VALUES (4, 'Sport', 'Categoria dello sport');
+INSERT INTO t_categories (c_name, c_description) VALUES ('Moda', 'Categoria della moda');
+INSERT INTO t_categories (c_name, c_description) VALUES ('Tech', 'Categoria tech');
+INSERT INTO t_categories (c_name, c_description) VALUES ('Viaggi', 'Categoria dei viaggi');
+INSERT INTO t_categories (c_name, c_description) VALUES ('Sport', 'Categoria dello sport');
 
 
 INSERT INTO t_products (category_id, c_name, c_description, c_price) VALUES (1, 'MacBook Pro M4', 'Laptop Apple con chip M4 di ultima generazione', 2499.00);
