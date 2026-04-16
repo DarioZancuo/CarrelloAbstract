@@ -10,3 +10,4 @@ public class CarrelloAbstractApplication {
 		SpringApplication.run(CarrelloAbstractApplication.class, args);
 	}
 }
+
